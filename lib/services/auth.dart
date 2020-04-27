@@ -9,12 +9,25 @@ class AuthService {
     return user != null ? User(uid: user.uid) : null;
   }
 
+  Stream<User> get user {
+    return _auth.onAuthStateChanged.map(_firebaseToUser);
+  }
+
   Future signInAnon() async {
     try {
       AuthResult result = await _auth.signInAnonymously();
       FirebaseUser user = result.user;
       return _firebaseToUser(user);
     } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future signout() async{
+    try{
+      return await _auth.signOut();
+    } catch(e){
       print(e.toString());
       return null;
     }
