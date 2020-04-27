@@ -1,14 +1,16 @@
 import 'package:brewcrew/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   final Function toggle;
-  SignIn(this.toggle);
+
+  Register(this.toggle);
+
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _authService = AuthService();
   String _email;
   String _password;
@@ -20,7 +22,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text('Sign In'),
+        title: Text('Sign Up'),
         actions: <Widget>[
           FlatButton.icon(
               onPressed: widget.toggle,
@@ -28,7 +30,7 @@ class _SignInState extends State<SignIn> {
                 Icons.person,
                 color: Colors.white,
               ),
-              label: Text('Sign Up', style: TextStyle(color: Colors.white),))
+              label: Text('Sign In', style: TextStyle(color: Colors.white),)),
         ],
       ),
       body: Container(
@@ -55,7 +57,7 @@ class _SignInState extends State<SignIn> {
                 color: Colors.pink[400],
                 onPressed: () async {},
                 child: Text(
-                  'Sign In',
+                  'Register',
                   style: TextStyle(color: Colors.white),
                 ),
               ),

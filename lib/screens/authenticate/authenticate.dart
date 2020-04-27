@@ -1,5 +1,8 @@
+import 'package:brewcrew/screens/authenticate/register.dart';
 import 'package:brewcrew/screens/authenticate/sign_in.dart';
 import 'package:flutter/material.dart';
+
+import 'sign_in.dart';
 
 
 class Authenticate extends StatefulWidget {
@@ -8,10 +11,17 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
+  bool showRegister = true;
+
+  void toggle (){
+    setState(() {
+      showRegister = !showRegister;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: SignIn(),
+      child: showRegister ? Register(toggle) : SignIn(toggle),
     );
   }
 }
